@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Adapter;
+namespace App\Adapters;
 
 class Store1ProductsAdapter implements ProductsAdapterInterface
 {

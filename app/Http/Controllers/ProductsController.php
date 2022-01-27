@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controller;
-use App\Adapter\ProductsAdapterInterface;
-use App\Adapter\Store1ProductsAdapter;
-use App\Adapter\Store2ProductsAdapter;
+use App\Adapters\ProductsAdapterInterface;
+use App\Adapters\Store1ProductsAdapter;
+use App\Adapters\Store2ProductsAdapter;
 use Exception;
 
 class ProductsController extends Controller
@@ -22,7 +22,7 @@ class ProductsController extends Controller
     private function getStoreAdapter()
     {
         $currentStore =  env("CURRENT_STORE");
-        $currentAdapterClassName = 'App\Adapter\Store' . $currentStore . 'ProductsAdapter';
+        $currentAdapterClassName = 'App\Adapters\Store' . $currentStore . 'ProductsAdapter';
 
         // Verifica se o nome da classe corresponde a uma classe válida
         // que implementa a ProductsAdapterInterface
