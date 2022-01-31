@@ -4,7 +4,7 @@ namespace App\Adapters;
 
 class Store2ProductsAdapter implements ProductsAdapterInterface
 {
-    private string $receivedJson = '
+    private string $receivedProducts = '
     {
         "products": [
             {
@@ -29,27 +29,27 @@ class Store2ProductsAdapter implements ProductsAdapterInterface
 
     public function getProducts(): array
     {
-        $products = $this->adaptProducts($this->receivedJson);
+        $products = $this->adaptProducts($this->receivedProducts);
 
         return $products;
     }
 
-    private function adaptProducts(string $receivedJson): array
+    private function adaptProducts(string $receivedProductsJson): array
     {
-        $receivedJsonArray = json_decode($receivedJson, true);
+        $receivedProductsArray = json_decode($receivedProductsJson, true);
         $adaptedProducts = [];
 
-        // Estamos interessados apenas no objeto 'products' recebido
-        foreach ($receivedJsonArray['products'] as $receivedProduct) {
+		// Estamos interessados apenas no objeto 'products' do array
+        foreach ($receivedProductsArray['products'] as $receivedProduct) {
             $score = $receivedProduct['prod_score'] / 20;
 
             $adaptedProducts[] = [
                 'id' => "STORE2_{$receivedProduct['prod_id']}",
                 'name' => $receivedProduct['prod_name'],
-                'price' => floatval($receivedProduct['prod_price']),
+                'price' => (float)($receivedProduct['prod_price']),
                 'description' => $receivedProduct['prod_description'],
                 'score' => $score,
-                'quantity_in_stock' => intval($receivedProduct['prod_in_stock']),
+                'quantity_in_stock' => (int)($receivedProduct['prod_in_stock']),
             ];
         }
 

@@ -41,10 +41,10 @@ class Store1ProductsAdapter implements ProductsAdapterInterface
             $adaptedProducts[] = [
                 'id' => "STORE1_{$receivedProduct['id']}",
                 'name' => $receivedProduct['nome'],
-                'price' => floatval($receivedProduct['preco']),
+                'price' => (float)($receivedProduct['preco']),
                 'description' => $receivedProduct['descricao'],
                 'score' => $score,
-                'quantity_in_stock' => intval($receivedProduct['qtd_estoque']),
+                'quantity_in_stock' => (int)($receivedProduct['qtd_estoque']),
             ];
         }
 
