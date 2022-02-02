@@ -12,15 +12,24 @@ O padrão Adapter pode ser utilizado para facilitar a alteração da loja aprese
 
 ### Inicialização
 #### Instalando as dependências do projeto
-Executar `composer install` na pasta do projeto.
+Executar `composer install` na pasta do projeto (dentro do diretório _tutorial_marketplace_adapter_).
 
 #### Configuração das variáveis de ambiente
-Renomear o arquivo _.env.example_ para _.env_
+Por questões de segurança, não é recomendado que as variáveis de ambiente sejam armazenadas em repositórios remotos. 
+
+Portanto, foi fornecido um arquivo .env.example na pasta do projeto, que possui a maior parte do conteúdo necessário.
+
+Na pasta do projeto, renomear o arquivo _.env.example_ para _.env_
 
 Desta forma, nossa variavel de ambiente `CURRENT_STORE`, pode ser visualizada pelo sistema.
 
+#### Criando a _APP_KEY_
+Para o funcionamento correto de um projeto em _Laravel_, a variável `APP_KEY` no arquivo _.env_ é necessária. 
+
+Para gerar a `APP_KEY`, precisamos executar o comando `php artisan key:generate` na pasta do projeto.
+
 #### Iniciando o servidor do marketplace
- 1. Executar `php artisan serve` no dentro do diretório _marketplace_adapter_.
+Executar `php artisan serve` dentro do diretório _tutorial_marketplace_adapter_.
 
 Este comando inicializará um servidor no endereço http://localhost:8000/, caso deseje alterar a porta utilizada, execute o comando passando o parâmetro `--port=` , com o valor da porta desejada.
 
